@@ -50,7 +50,7 @@ thai-postal-code/
 ├── tsconfig.scripts.json             ← scripts/ only; types: ["bun-types", "node"]
 ├── tsup.config.ts                    ← Dual CJS + ESM build via tsup
 ├── jsr.json                          ← JSR publish config (points at src/index.ts)
-├── .eslintrc.json
+├── eslint.config.ts                  ← ESLint flat config (defineConfig + projectService)
 └── .prettierrc
 ```
 
@@ -225,6 +225,7 @@ bun run build
 - **No `.js` extensions in imports.** `Bundler` module resolution handles bare `.ts` paths.
 - **Strict TypeScript.** Do not weaken `tsconfig.json` — `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes` are all on.
 - **Bilingual.** Every public-facing type exposes both `NameTh` and `NameEn` fields.
+- **ESLint flat config.** `eslint.config.ts` uses ESLint's `defineConfig()` (v9.22+) with `typescript-eslint` `recommendedTypeChecked`. `tseslint.config()` is deprecated — do not use it. Uses `parserOptions.projectService: true` (replaces `project: true`). `tests/**` excluded from linting. Lint runs on `src/` only via `bun run lint`.
 - **`lat`/`lng` are `number | null`.** Never assume coordinates exist — always handle `null`.
 
 ---
