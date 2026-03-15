@@ -49,15 +49,15 @@ type SearchEntry = {
 
 // Materialise a flat search-friendly array (no codes, just strings we search on).
 const SEARCH_ROWS: SearchEntry[] = DATA.map((r) => ({
-  postalCode:        r.postalCode,
-  provinceNameTh:    r.provinceNameTh,
-  provinceNameEn:    r.provinceNameEn.toLowerCase(),
-  districtNameTh:    r.districtNameTh,
-  districtNameEn:    r.districtNameEn.toLowerCase(),
+  postalCode: r.postalCode,
+  provinceNameTh: r.provinceNameTh,
+  provinceNameEn: r.provinceNameEn.toLowerCase(),
+  districtNameTh: r.districtNameTh,
+  districtNameEn: r.districtNameEn.toLowerCase(),
   subdistrictNameTh: r.subdistrictNameTh,
   subdistrictNameEn: r.subdistrictNameEn.toLowerCase(),
-  lat:               r.lat,
-  lng:               r.lng,
+  lat: r.lat,
+  lng: r.lng,
 }));
 
 // ─── Public API ───────────────────────────────────────────────────────────────

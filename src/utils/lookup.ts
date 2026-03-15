@@ -16,11 +16,13 @@ function normalizePostalCode(input: string): string {
 
 function buildAddressResult(
   postalCode: string,
-  records: RawThaiRecord[]
+  records: RawThaiRecord[],
 ): ThaiAddressResult {
   const first = records[0];
   if (first === undefined) {
-    throw new Error(`[thai-postal-code] No records for postal code: "${postalCode}"`);
+    throw new Error(
+      `[thai-postal-code] No records for postal code: "${postalCode}"`,
+    );
   }
 
   // Deduplicate subdistricts by subdistrictCode, then sort by Thai name.
@@ -30,14 +32,14 @@ function buildAddressResult(
     if (!seen.has(r.subdistrictCode)) {
       seen.add(r.subdistrictCode);
       subdistricts.push({
-        subdistrictCode:   r.subdistrictCode,
+        subdistrictCode: r.subdistrictCode,
         subdistrictNameTh: r.subdistrictNameTh,
         subdistrictNameEn: r.subdistrictNameEn,
       });
     }
   }
   subdistricts.sort((a, b) =>
-    a.subdistrictNameTh.localeCompare(b.subdistrictNameTh, "th")
+    a.subdistrictNameTh.localeCompare(b.subdistrictNameTh, "th"),
   );
 
   return {
@@ -73,7 +75,7 @@ function buildAddressResult(
  */
 export function lookupByPostalCode(
   postalCode: string,
-  options: LookupOptions = {}
+  options: LookupOptions = {},
 ): ThaiAddressResult | null {
   const { silent = false } = options;
   const code = normalizePostalCode(postalCode);
@@ -81,7 +83,7 @@ export function lookupByPostalCode(
   if (!/^\d{5}$/.test(code)) {
     if (silent) return null;
     throw new Error(
-      `[thai-postal-code] Invalid format: "${postalCode}". Expected a 5-digit string.`
+      `[thai-postal-code] Invalid format: "${postalCode}". Expected a 5-digit string.`,
     );
   }
 
@@ -89,7 +91,9 @@ export function lookupByPostalCode(
 
   if (records === undefined || records.length === 0) {
     if (silent) return null;
-    throw new Error(`[thai-postal-code] Postal code not found: "${postalCode}".`);
+    throw new Error(
+      `[thai-postal-code] Postal code not found: "${postalCode}".`,
+    );
   }
 
   return buildAddressResult(code, records);
@@ -108,18 +112,18 @@ export function lookupByPostalCode(
  */
 export function autofillByPostalCode(
   postalCode: string,
-  options: LookupOptions = {}
+  options: LookupOptions = {},
 ): ThaiAutofillResult | null {
   const result = lookupByPostalCode(postalCode, options);
   if (result === null) return null;
 
   return {
-    postalCode:     result.postalCode,
+    postalCode: result.postalCode,
     provinceNameTh: result.provinceNameTh,
     provinceNameEn: result.provinceNameEn,
     districtNameTh: result.districtNameTh,
     districtNameEn: result.districtNameEn,
-    subdistricts:   result.subdistricts,
+    subdistricts: result.subdistricts,
   };
 }
 
@@ -133,7 +137,9 @@ export function autofillByPostalCode(
  * // [{ subdistrictNameTh: "ลุมพินี", subdistrictNameEn: "Lumphini", subdistrictCode: 103007 }]
  * ```
  */
-export function getSubdistrictsByPostalCode(postalCode: string): SubdistrictEntry[] {
+export function getSubdistrictsByPostalCode(
+  postalCode: string,
+): SubdistrictEntry[] {
   return lookupByPostalCode(postalCode, { silent: true })?.subdistricts ?? [];
 }
 
@@ -145,11 +151,14 @@ export function listProvinces(): { nameTh: string; nameEn: string }[] {
   const map = new Map<number, { nameTh: string; nameEn: string }>();
   for (const r of loadData()) {
     if (!map.has(r.provinceCode)) {
-      map.set(r.provinceCode, { nameTh: r.provinceNameTh, nameEn: r.provinceNameEn });
+      map.set(r.provinceCode, {
+        nameTh: r.provinceNameTh,
+        nameEn: r.provinceNameEn,
+      });
     }
   }
   return [...map.values()].sort((a, b) =>
-    a.nameTh.localeCompare(b.nameTh, "th")
+    a.nameTh.localeCompare(b.nameTh, "th"),
   );
 }
 
@@ -159,20 +168,23 @@ export function listProvinces(): { nameTh: string; nameEn: string }[] {
  * @param provinceNameTh - Province name in Thai, e.g. `"เชียงใหม่"`
  */
 export function listDistrictsByProvince(
-  provinceNameTh: string
+  provinceNameTh: string,
 ): { nameTh: string; nameEn: string; postalCode: string }[] {
-  const map = new Map<number, { nameTh: string; nameEn: string; postalCode: string }>();
+  const map = new Map<
+    number,
+    { nameTh: string; nameEn: string; postalCode: string }
+  >();
   for (const r of loadData()) {
     if (r.provinceNameTh === provinceNameTh && !map.has(r.districtCode)) {
       map.set(r.districtCode, {
-        nameTh:     r.districtNameTh,
-        nameEn:     r.districtNameEn,
+        nameTh: r.districtNameTh,
+        nameEn: r.districtNameEn,
         postalCode: r.postalCode,
       });
     }
   }
   return [...map.values()].sort((a, b) =>
-    a.nameTh.localeCompare(b.nameTh, "th")
+    a.nameTh.localeCompare(b.nameTh, "th"),
   );
 }
 
@@ -215,15 +227,15 @@ export function searchAddress(query: string, limit = 20): ThaiSearchResult[] {
       r.subdistrictNameEn.includes(q)
     ) {
       results.push({
-        postalCode:        r.postalCode,
-        provinceNameTh:    r.provinceNameTh,
-        provinceNameEn:    r.provinceNameEn,
-        districtNameTh:    r.districtNameTh,
-        districtNameEn:    r.districtNameEn,
+        postalCode: r.postalCode,
+        provinceNameTh: r.provinceNameTh,
+        provinceNameEn: r.provinceNameEn,
+        districtNameTh: r.districtNameTh,
+        districtNameEn: r.districtNameEn,
         subdistrictNameTh: r.subdistrictNameTh,
         subdistrictNameEn: r.subdistrictNameEn,
-        lat:               r.lat,
-        lng:               r.lng,
+        lat: r.lat,
+        lng: r.lng,
       });
     }
   }
