@@ -17,7 +17,7 @@ export type {
   ThaiAutofillResult,
   ThaiSearchResult,
   LookupOptions,
-} from "./types/index";
+} from './types/index'
 
 // Core API
 export {
@@ -28,4 +28,4 @@ export {
   listDistrictsByProvince,
   searchAddress,
   listAllPostalCodes,
-} from "./utils/lookup";
+} from './utils/lookup'
