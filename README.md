@@ -8,7 +8,7 @@
 
 [![CI](https://github.com/antronic/thai-postal-code/actions/workflows/ci.yml/badge.svg)](https://github.com/antronic/thai-postal-code/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/thai-postal-code.svg)](https://www.npmjs.com/package/thai-postal-code)
-[![JSR](https://jsr.io/badges/@jirachai/thai-postal-code)](https://jsr.io/@jirachai/thai-postal-code)
+[![JSR](https://jsr.io/badges/@antronic/thai-postal-code)](https://jsr.io/@antronic/thai-postal-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ---
@@ -29,8 +29,8 @@ npm install thai-postal-code
 bun add thai-postal-code
 
 # JSR (Deno / Bun / Node)
-npx jsr add @jirachai/thai-postal-code
-deno add jsr:@jirachai/thai-postal-code
+npx jsr add @antronic/thai-postal-code
+deno add jsr:@antronic/thai-postal-code
 
 # CDN (browser, no bundler)
 import { autofillByPostalCode } from "https://esm.sh/thai-postal-code";

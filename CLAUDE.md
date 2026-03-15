@@ -255,5 +255,5 @@ bun run build
 | Placeholder | Replace with |
 |-------------|--------------|
 | `YOUR_USERNAME` | antronic |
-| `YOUR_SCOPE` | @jirachai |
+| `YOUR_SCOPE` | @antronic |
 | `YOUR_NAME` in LICENSE | Jirachai Chansiavnon |
