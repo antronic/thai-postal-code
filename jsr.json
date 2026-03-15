@@ -1,0 +1,14 @@
+{
+  "$schema": "https://jsr.io/schema/config-file.v1.json",
+  "name": "@YOUR_SCOPE/thai-postal-code",
+  "version": "0.1.0",
+  "description": "TypeScript library to autofill Thai province and district from postal code, with subdistrict listing support",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "publish": {
+    "include": ["src/**/*.ts", "README.md", "LICENSE"],
+    "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts"]
+  }
+}
