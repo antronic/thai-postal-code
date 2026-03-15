@@ -1,26 +1,21 @@
 # thai-postal-code
 
-> Resolve Thai postal codes into province, district, and subdistricts — with bilingual (Thai + English) names and coordinates.
+> Searching Thai addresses by postal code to autofill province and district, with a list of subdistricts.
+> ค้นหาที่อยู่ด้วยรหัสไปรษณีย์ สำหรับ autofill จังหวัด และ อำเภอ พร้อมรายการตำบล
 
-[![CI](https://github.com/YOUR_USERNAME/thai-postal-code/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/thai-postal-code/actions/workflows/ci.yml)
+> Thai postal code lookup for address autofill — province, district, and subdistricts with bilingual names.
+> ค้นหารหัสไปรษณีย์ไทย สำหรับกรอกที่อยู่อัตโนมัติ — จังหวัด อำเภอ และตำบล พร้อมชื่อสองภาษา
+
+[![CI](https://github.com/antronic/thai-postal-code/actions/workflows/ci.yml/badge.svg)](https://github.com/antronic/thai-postal-code/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/thai-postal-code.svg)](https://www.npmjs.com/package/thai-postal-code)
-[![JSR](https://jsr.io/badges/@YOUR_SCOPE/thai-postal-code)](https://jsr.io/@YOUR_SCOPE/thai-postal-code)
+[![JSR](https://jsr.io/badges/@jirachai/thai-postal-code)](https://jsr.io/@jirachai/thai-postal-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ---
 
-## What is this?
+Input a 5-digit Thai postal code, get back the province, district, and a ready-to-use list of subdistricts — all with Thai and English names. Coordinates included where available.
 
-Thai postal codes are 5-digit numbers. Each code maps to exactly **one district** (อำเภอ / เขต) inside a province (จังหวัด), but may cover **multiple sub-districts** (ตำบล / แขวง).
-
-This library solves the standard Thai address form problem:
-
-1. User enters a postal code → **province and district fill automatically**
-2. A subdistrict dropdown is **populated with the correct choices**
-
-All names come in both Thai and English. Coordinates (lat/lng) are included where available. Everything runs **synchronously** — data is indexed at module load, so every lookup is an O(1) hash map read with no async overhead.
-
-Works in **Node.js, Bun, Deno, and the browser** with no runtime dependencies.
+Synchronous, zero dependencies, works in Node.js, Bun, Deno, and the browser.
 
 ---
 
@@ -34,8 +29,8 @@ npm install thai-postal-code
 bun add thai-postal-code
 
 # JSR (Deno / Bun / Node)
-npx jsr add @YOUR_SCOPE/thai-postal-code
-deno add jsr:@YOUR_SCOPE/thai-postal-code
+npx jsr add @jirachai/thai-postal-code
+deno add jsr:@jirachai/thai-postal-code
 
 # CDN (browser, no bundler)
 import { autofillByPostalCode } from "https://esm.sh/thai-postal-code";
