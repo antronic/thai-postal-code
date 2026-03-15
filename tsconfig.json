@@ -21,6 +21,6 @@
     "exactOptionalPropertyTypes": true,
     "allowImportingTsExtensions": false
   },
-  "include": ["src/**/*", "scripts/**/*"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "include": ["src/**/*", "scripts/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

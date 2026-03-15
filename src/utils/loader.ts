@@ -4,7 +4,7 @@ import _data from "../data/thai-postal-code.data";
 // ─── Raw data ────────────────────────────────────────────────────────────────
 
 // Cast once at module load — safe because bundle-data.ts writes this exact shape.
-const DATA = _data as RawThaiRecord[];
+const DATA = _data;
 
 // ─── Primary index: postalCode → RawThaiRecord[] ─────────────────────────────
 //
