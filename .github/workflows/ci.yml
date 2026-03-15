@@ -29,6 +29,9 @@ jobs:
       - name: Fetch & bundle data
         run: bun run data:pipeline
 
+      - name: Format code
+        run: bun run format
+
       - name: Type check
         run: bun run build:check
 

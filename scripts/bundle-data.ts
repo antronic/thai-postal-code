@@ -212,11 +212,11 @@ async function main(): Promise<void> {
 // Secondary source: https://github.com/rathpanyowat/Thai-zip-code-latitude-and-longitude
 // Generated at: ${new Date().toISOString()}
 
-import type { RawThaiRecord } from "../types/index";
+import type { RawThaiRecord } from '../types/index'
 
-const data: RawThaiRecord[] = ${JSON.stringify(records, null, 2)};
+const data: RawThaiRecord[] = ${JSON.stringify(records, null, 2)}
 
-export default data;
+export default data
 `;
 
   await mkdir(dirname(OUTPUT_PATH), { recursive: true });
