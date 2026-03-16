@@ -1,6 +1,6 @@
 {
   "name": "thai-postal-code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript library to autofill Thai province and district from postal code, with subdistrict listing support",
   "type": "module",
   "module": "./dist/index.js",
