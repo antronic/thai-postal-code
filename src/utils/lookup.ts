@@ -11,7 +11,7 @@ import { getPostalIndex, getSearchRows, loadData } from './loader'
 // ─── Internal helpers ────────────────────────────────────────────────────────
 
 function normalizePostalCode(input: string): string {
-  return input.trim()
+  return String(input).trim()
 }
 
 function buildAddressResult(postalCode: string, records: RawThaiRecord[]): ThaiAddressResult {

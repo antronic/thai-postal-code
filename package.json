@@ -52,7 +52,8 @@
     "data:pipeline": "bun run data:fetch && bun run data:validate",
     "clean": "rm -rf dist",
     "build:check:scripts": "tsc --noEmit --project tsconfig.scripts.json",
-    "build:check:all": "bun run build:check && bun run build:check:scripts"
+    "build:check:all": "bun run build:check && bun run build:check:scripts",
+    "perftest": "bun run scripts/perf-test.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
